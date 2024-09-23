@@ -1,0 +1,140 @@
+% Packages
+\usepackage{amsmath,amssymb,amsthm,amsfonts,thmtools}
+\usepackage{enumitem}[cleveref]
+\usepackage{amsfonts}
+\usepackage[margin=1in]{geometry}
+\usepackage{float}
+\usepackage{microtype}
+\RequirePackage{color}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+
+% For arrows
+\RequirePackage{mathtools}
+
+% For script letters
+\RequirePackage{mathrsfs}
+
+% For boxes around cheatsheets
+\usepackage{mdframed}
+\mdfdefinestyle{cheatsheet}{%
+    linecolor=black,
+    outerlinewidth=2pt,
+    roundcorner=20pt,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=40pt,
+    innerleftmargin=40pt,
+    leftmargin = 100pt,
+    rightmargin = 100pt
+    backgroundcolor=gray!50!white}
+
+% Parindent/parskip
+\setlength{\parindent}{0pt}
+
+% Custom color names
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0,0.30,0}
+\definecolor{darkred}{rgb}{0.75,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.6} 
+\definecolor{custompurple}{RGB}{62, 34, 127}
+
+
+% Citation colors
+\def\customcitecolor{darkred}
+\def\customlinkcolor{darkred}
+
+% Hyperref settings
+\usepackage[%
+    colorlinks,
+    citecolor=\customcitecolor,%
+    linkcolor=\customlinkcolor,%
+    urlcolor=\customlinkcolor%
+]{hyperref}
+
+% Removes vertical spacing around aligned environments
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{2pt}%
+  \setlength{\belowdisplayskip}{2pt}%
+  \setlength{\abovedisplayshortskip}{0pt}%
+  \setlength{\belowdisplayshortskip}{0pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+
+% Removes spacing around enumerate/itemize environments
+\usepackage{enumitem}
+\usepackage{setspace}
+\setlist[enumerate,1]{leftmargin=1cm}
+\setlist[enumerate,2]{leftmargin=2cm}
+\setlist[itemize,1]{leftmargin=0.5cm}
+\setlist[itemize,2]{leftmargin=2cm}
+\setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
+
+% Section headings
+\newcommand{\sectionheader}{Lecture~\thesection:~}
+
+% Course info
+\newcommand{\theinstructor}{Natalie Stewart}
+\newcommand{\thecoursenumber}{Babytop}
+\newcommand{\thecoursetitle}{Equivariant stable homotopy theory and the Kervaire invariant one problem}
+\newcommand{\thetitle}{\thecoursenumber:\, \thecoursetitle}
+\newcommand{\theterm}{Fall 2024}
+
+% Title page
+\title{\MakeUppercase{\thetitle} \\ \theterm}
+\author{\theinstructor}
+%\date{\theterm}
+
+% Header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape\thecoursenumber}
+\fancyhead[C]{\small\itshape\thecoursetitle}
+\fancyhead[R]{\small\itshape\theterm}
+
+% new toc
+\renewcommand{\contentsname}{\textbf{Contents}}
+\usepackage{xpatch}
+% Currently working on modification of https://tex.stackexchange.com/questions/227098/making-chapters-bold-in-table-of-contents
+% Add bold to \section titles in ToC and remove . after numbers
+\renewcommand{\tocsection}[3]{%
+  \indentlabel{\@ifnotempty{#2}{\bfseries\ignorespaces#1 #2\quad}}\bfseries#3}
+% Remove . after numbers in \subsection
+\renewcommand{\tocsubsection}[3]{%
+  \indentlabel{\@ifnotempty{#2}{\ignorespaces#1 #2\quad}}#3}
+%\let\tocsubsubsection\tocsubsection% Update for \subsubsection
+%...
+\newcommand\@dotsep{4.5}
+\def\@tocline#1#2#3#4#5#6#7{\relax
+  \ifnum #1>\c@tocdepth % then omit
+  \else
+    \par \addpenalty\@secpenalty\addvspace{#2}%
+    \begingroup \hyphenpenalty\@M
+    \@ifempty{#4}{%
+      \@tempdima\csname r@tocindent\number#1\endcsname\relax
+    }{%
+      \@tempdima#4\relax
+    }%
+    \parindent\z@ \leftskip#3\relax \advance\leftskip\@tempdima\relax
+    \rightskip\@pnumwidth plus1em \parfillskip-\@pnumwidth
+    #5\leavevmode\hskip-\@tempdima{#6}\nobreak
+    \ifnum #1< 2
+      \hfill
+    \else
+      \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill
+    \fi
+    \nobreak
+    \hbox to\@pnumwidth{\@tocpagenum{\ifnum#1=1\bfseries\fi#7}}\par% <-- \bfseries for \section page
+    \nobreak
+    \endgroup
+  \fi}
+\AtBeginDocument{%
+\expandafter\renewcommand\csname r@tocindent0\endcsname{0pt}
+}
+\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
+\makeatother
+
+\newcommand{\toc}{{\hypersetup{linkcolor=black}\tableofcontents}}

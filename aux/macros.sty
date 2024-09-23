@@ -1,0 +1,364 @@
+% Pushout, pullback
+\providecommand{\po}{\arrow[ul,phantom,"\ulcorner" very near start]}
+\providecommand{\pb}{\arrow[dr,phantom,"\lrcorner" very near start]}
+
+% Overset to and from
+\providecommand{\xto}[1]{\xrightarrow{#1}}
+\providecommand{\from}{\leftarrow}
+\providecommand{\xfrom}[1]{\overset{#1}{\leftarrow}}
+
+% Backwards verion of mapsto
+\providecommand{\mapsfrom}{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\providecommand{\longmapsfrom}{\mathrel{\reflectbox{\ensuremath{\longmapsto}}}}
+
+% Hook arrows
+\providecommand{\hookto}{\xhookrightarrow{}}
+\providecommand{\xhookto}[1]{\overset{#1}{\hookrightarrow}}
+\providecommand{\hookfrom}{\xhookleftarrow{}}
+\providecommand{\xhookfrom}[1]{\xhookleftarrow{#1}}
+
+% Two-headed arrows
+\providecommand{\tto}{\twoheadrightarrow}
+\providecommand{\xtto}[1]{\overset{#1}{\twoheadrightarrow}}
+\providecommand{\ffrom}{\twoheadleftarrow}
+\providecommand{\xffrom}[1]{\overset{#1}{\ffrom}}
+
+% For superimposing in order to get closed and open immersion arrows
+\makeatletter
+\providecommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+\providecommand{\smallslash}{\mbox{\tiny/}}
+
+% Closed and open hook arrows
+\providecommand{\clhookto}{\mathrel{\raisebox{0.1em}{$\mathrel{\mathpalette\superimpose{{\hspace{0.1cm}\vspace{0.1em}\smallslash}{\hookrightarrow}}}$}}}
+\providecommand{\xclhook}[1]{\overset{#1}{\clhook}}
+\providecommand{\clhookfrom}{\mathrel{\raisebox{0.1em}{$\mathrel{\mathpalette\superimpose{{\hspace{0.1cm}\vspace{0.1em}\smallslash}{\hookleftarrow}}}$}}}
+\providecommand{\ohookto}{\mathrel{\raisebox{0.03em}{$\mathrel{\mathpalette\superimpose{{\hspace{0.1cm}\vspace{0.03em}\mbox{\small$\circ$}}{\hookrightarrow}}}$}}}
+\providecommand{\ohookfrom}{\mathrel{\raisebox{0.03em}{$\mathrel{\mathpalette\superimpose{{\hspace{0.1cm}\vspace{0.03em}\mbox{\small$\circ$}}{\hookleftarrow}}}$}}}
+
+% Arrows with tails
+\providecommand{\cofto}{\rightarrowtail}
+\providecommand{\coffrom}{\leftarrowtail}
+\providecommand{\xcofto}[1]{\overset{#1}{\cofto}}
+\providecommand{\xcoffrom}[1]{\overset{#1}{\coffrom}}
+
+% Dashed arrows
+\providecommand{\dashto}{\dashrightarrow}
+\providecommand{\dashfrom}{\dashleftarrow}
+
+% better spacing colon for right adjoints
+\newcommand\noloc{%
+   \nobreak
+   \mspace{6mu plus 1mu}
+   {:}
+   \nonscript\mkern-\thinmuskip
+   \mathpunct{}
+   \mspace{2mu}
+}
+
+% Squiggle arrows
+\providecommand{\sqto}{\rightsquigarrow}
+\providecommand{\sqfrom}{\mathrel{\reflectbox{\ensuremath{\sqto}}}}
+
+
+%%%%%%%%%%%%%
+% Text commands
+\providecommand{\ab}{\mathrm{ab}}
+\providecommand{\alg}{\mathrm{alg}}
+\providecommand{\an}{\mathrm{an}}
+\providecommand{\ann}{\mathrm{ann}}
+\providecommand{\Aut}{\mathrm{Aut}}
+\providecommand{\BG}{\mathrm{BG}}
+\providecommand{\BGL}{\mathrm{BGL}}
+\providecommand{\Bl}{\mathrm{Bl}}
+\providecommand{\BO}{\mathrm{BO}}
+\providecommand{\BP}{\mathrm{BP}}
+\providecommand{\BSL}{\mathrm{BSL}}
+\providecommand{\BSO}{\mathrm{BSO}}
+\providecommand{\BSp}{\mathrm{BSp}}
+\providecommand{\BSU}{\mathrm{BSU}}
+\providecommand{\BU}{\mathrm{BU}}
+\providecommand{\can}{\mathrm{can}}
+\providecommand{\cd}{\mathrm{cd}}
+\providecommand{\cdh}{\mathrm{cdh}}
+\providecommand{\CH}{\mathrm{CH}}
+\providecommand{\Ch}{\mathrm{Ch}}
+\providecommand{\cl}{\mathrm{cl}}
+\providecommand{\codim}{\mathrm{codim}}
+\providecommand{\codom}{\mathrm{codom}}
+\providecommand{\coeq}{\mathrm{coeq}}
+\providecommand{\coev}{\mathrm{coev}}
+\providecommand{\cof}{\mathrm{cof}}
+\providecommand{\cofib}{\mathrm{cofib}}
+\providecommand{\coker}{\mathrm{coker}}
+\providecommand{\colim}{\mathrm{colim}}
+\providecommand{\cone}{\mathrm{cone}}
+\providecommand{\conj}{\mathrm{conj}}
+\providecommand{\const}{\mathrm{const}}
+\providecommand{\cyc}{\mathrm{cyc}}
+\providecommand{\diag}{\mathrm{diag}}
+\providecommand{\dg}{\mathrm{dg}}
+\providecommand{\Disc}{\mathrm{Disc}}
+\providecommand{\disc}{\mathrm{disc}}
+\providecommand{\dual}{\mathrm{dual}}
+\providecommand{\eff}{\mathrm{eff}}
+\providecommand{\EKL}{\mathrm{EKL}}
+\providecommand{\End}{\mathrm{End}}
+\providecommand{\eq}{\mathrm{eq}}
+\providecommand{\ess}{\mathrm{ess}}
+\providecommand{\et}{\mathrm{et}}
+\providecommand{\Et}{\mathrm{Et}}
+\providecommand{\EU}{\mathrm{EU}}
+\providecommand{\ev}{\mathrm{ev}}
+\providecommand{\Ex}{\mathrm{Ex}}
+\providecommand{\ex}{\mathrm{ex}}
+\providecommand{\Exc}{\mathrm{Exc}}
+\providecommand{\Ext}{\mathrm{Ext}}
+\providecommand{\fib}{\mathrm{fib}}
+\providecommand{\Fix}{\mathrm{Fix}}
+\providecommand{\fppf}{\mathrm{fppf}}
+\providecommand{\fpqc}{\mathrm{fpqc}}
+\providecommand{\Frac}{\mathrm{Frac}}
+\providecommand{\Frob}{\mathrm{Frob}}
+\providecommand{\Fun}{\mathrm{Fun}}
+\providecommand{\Gal}{\mathrm{Gal}}
+\providecommand{\gen}{\mathrm{gen}}
+\providecommand{\GL}{\mathrm{GL}}
+\providecommand{\gp}{\mathrm{gp}}
+\providecommand{\Gr}{\mathrm{Gr}}
+\providecommand{\gr}{\mathrm{gr}}
+\providecommand{\GW}{\mathrm{GW}}
+\providecommand{\Her}{\mathrm{Her}}
+\providecommand{\Ho}{\mathrm{Ho}}
+\providecommand{\hocofib}{\mathrm{hocofib}}
+\providecommand{\hocolim}{\mathrm{hocolim}}
+\providecommand{\hofib}{\mathrm{hofib}}
+\providecommand{\holim}{\mathrm{holim}}
+\providecommand{\Hom}{\mathrm{Hom}}
+\providecommand{\id}{\mathrm{id}}
+\providecommand{\Idem}{\mathrm{Idem}}
+\providecommand{\im}{\mathrm{im}}
+\providecommand{\incl}{\mathrm{incl}}
+\providecommand{\Ind}{\mathrm{Ind}}
+\providecommand{\ind}{\mathrm{ind}}
+\providecommand{\inj}{\mathrm{inj}}
+\providecommand{\Inn}{\mathrm{Inn}}
+\providecommand{\inv}{\mathrm{inv}}
+\providecommand{\iso}{\mathrm{iso}}
+\providecommand{\Jac}{\mathrm{Jac}}
+\providecommand{\KGL}{\mathrm{KGL}}
+\providecommand{\kgl}{\mathrm{kgl}}
+\providecommand{\KH}{\mathrm{KH}}
+\providecommand{\KO}{\mathrm{KO}}
+\providecommand{\ko}{\mathrm{ko}}
+\providecommand{\KQ}{\mathrm{KQ}}
+\providecommand{\kq}{\mathrm{kq}}
+\providecommand{\KR}{\mathrm{KR}}
+\providecommand{\KSp}{\mathrm{KSp}}
+\providecommand{\KU}{\mathrm{KU}}
+\providecommand{\ku}{\mathrm{ku}}
+\providecommand{\Lan}{\mathrm{Lan}}
+\providecommand{\Map}{\mathrm{Map}}
+\providecommand{\map}{\mathrm{map}}
+\providecommand{\MGL}{\mathrm{MGL}}
+\providecommand{\MO}{\mathrm{MO}}
+\providecommand{\Mor}{\mathrm{Mor}}
+\providecommand{\mor}{\mathrm{mor}}
+\providecommand{\mot}{\mathrm{mot}}
+\providecommand{\MSL}{\mathrm{MSL}}
+\providecommand{\MSLc}{\mathrm{MSL}^{\mathrm{c}}}
+\providecommand{\MSO}{\mathrm{MSO}}
+\providecommand{\MSp}{\mathrm{MSp}}
+\providecommand{\MSU}{\mathrm{MSU}}
+\providecommand{\MU}{\mathrm{MU}}
+\providecommand{\mult}{\mathrm{mult}}
+\providecommand{\Nis}{\mathrm{Nis}}
+\providecommand{\ob}{\mathrm{ob}}
+\providecommand{\obj}{\mathrm{obj}}
+\providecommand{\op}{\mathrm{op}}
+\providecommand{\Orb}{\mathrm{Orb}}
+\providecommand{\ord}{\mathrm{ord}}
+\providecommand{\Out}{\mathrm{Out}}
+\providecommand{\perf}{\mathrm{perf}}
+\providecommand{\Perm}{\mathrm{Perm}}
+\providecommand{\PGL}{\mathrm{PGL}}
+\providecommand{\Pic}{\mathrm{Pic}}
+\providecommand{\pr}{\mathrm{pr}}
+\providecommand{\pre}{\mathrm{pre}}
+\providecommand{\Prin}{\mathrm{Prin}}
+\providecommand{\Proj}{\mathrm{Proj}}
+\providecommand{\proj}{\mathrm{proj}}
+\providecommand{\PSL}{\mathrm{PSL}}
+\providecommand{\quot}{\mathrm{quot}}
+\providecommand{\Ran}{\mathrm{Ran}}
+\providecommand{\rank}{\mathrm{rank}}
+\providecommand{\Res}{\mathrm{Res}}
+\providecommand{\RO}{\mathrm{RO}}
+\providecommand{\sep}{\mathrm{sep}}
+\providecommand{\sgn}{\mathrm{sgn}}
+\providecommand{\SH}{\mathrm{SH}}
+\providecommand{\sig}{\mathrm{sig}}
+\providecommand{\Sing}{\mathrm{Sing}}
+\providecommand{\SL}{\mathrm{SL}}
+\providecommand{\SO}{\mathrm{SO}}
+\providecommand{\soc}{\mathrm{soc}}
+\providecommand{\Sp}{\mathrm{Sp}}
+\providecommand{\Span}{\mathrm{Span}}
+\providecommand{\Spec}{\mathrm{Spec}\hspace{0.1em}}
+\providecommand{\Spin}{\mathrm{Spin}}
+\providecommand{\spn}{\mathrm{spn}}
+\providecommand{\Sq}{\mathrm{Sq}}
+\providecommand{\st}{\mathrm{st}}
+\providecommand{\Stab}{\mathrm{Stab}}
+\providecommand{\SU}{\mathrm{SU}}
+\providecommand{\supp}{\mathrm{supp}}
+\providecommand{\Syl}{\mathrm{Syl}}
+\providecommand{\syl}{\mathrm{syl}}
+\providecommand{\Sym}{\mathrm{Sym}}
+\providecommand{\syn}{\mathrm{syn}}
+\providecommand{\SYT}{\mathrm{SYT}}
+\providecommand{\TC}{\mathrm{TC}}
+\providecommand{\td}{\mathrm{td}}
+\providecommand{\Th}{\mathrm{Th}}
+\providecommand{\THH}{\mathrm{THH}}
+\providecommand{\Tor}{\mathrm{Tor}}
+\providecommand{\TP}{\mathrm{TP}}
+\providecommand{\TR}{\mathrm{TR}}
+\providecommand{\Tr}{\mathrm{Tr}}
+\providecommand{\tr}{\mathrm{tr}}
+\providecommand{\univ}{\mathrm{univ}}
+\providecommand{\veff}{\mathrm{veff}}
+\providecommand{\vol}{\mathrm{vol}}
+\providecommand{\Wel}{\mathrm{Wel}}
+\providecommand{\Wr}{\mathrm{Wr}}
+\providecommand{\Zar}{\mathrm{Zar}}
+
+% Special text commands
+\providecommand{\et}{\text{\'{e}t}}
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\Re}{\mathrm{Re}}
+\providecommand{\Spec}{\text{Spec}\hspace{0.1em}}
+\providecommand{\spn}{\text{span}}
+
+% Blackboard letters
+\providecommand{\A}{\mathbb{A}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\F}{\mathbb{F}}
+\providecommand{\G}{\mathbb{G}}
+\providecommand{\H}{\mathbb{H}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\P}{\mathbb{P}}
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\Z}{\mathbb{Z}}
+
+% Categories
+\providecommand{\Ab}{\mathrm{Ab}}
+\providecommand{\Alg}{\mathrm{Alg}}
+\providecommand{\Ani}{\mathrm{Ani}}
+\providecommand{\Bimod}{\mathrm{Bimod}}
+\providecommand{\CAlg}{\mathrm{CAlg}}
+\providecommand{\Cat}{\mathrm{Cat}}
+\providecommand{\CDGA}{\mathrm{CDGA}}
+\providecommand{\CG}{\mathrm{CG}}
+\providecommand{\CGWH}{\mathrm{CGWH}}
+\providecommand{\Ch}{\mathrm{Ch}}
+\providecommand{\CMon}{\mathrm{CMon}}
+\providecommand{\coAlg}{\mathrm{coAlg}}
+\providecommand{\Coh}{\mathrm{Coh}}
+\providecommand{\CommRing}{\mathrm{CommRing}}
+\providecommand{\ConjSub}{\mathrm{ConjSub}}
+\providecommand{\coMod}{\mathrm{coMod}}
+\providecommand{\Cor}{\mathrm{Cor}}
+\providecommand{\Corr}{\mathrm{Corr}}
+\providecommand{\CoSh}{\mathrm{CoSh}}
+\providecommand{\CRing}{\mathrm{CRing}}
+\providecommand{\CW}{\mathrm{CW}}
+\providecommand{\Field}{\mathrm{Field}}
+\providecommand{\Fin}{\mathrm{Fin}}
+\providecommand{\FinSet}{\mathrm{FinSet}}
+\providecommand{\Gpd}{\mathrm{Gpd}}
+\providecommand{\Grp}{\mathrm{Grp}}
+\providecommand{\Grpd}{\mathrm{Grpd}}
+\providecommand{\Grph}{\mathrm{Grph}}
+\providecommand{\Kan}{\mathrm{Kan}}
+\providecommand{\Kar}{\mathrm{Kar}}
+\providecommand{\LMod}{\mathrm{LMod}}
+\providecommand{\Mfld}{\mathrm{Mfld}}
+\providecommand{\Mod}{\mathrm{Mod}}
+\providecommand{\NAlg}{\mathrm{NAlg}}
+\providecommand{\Ouv}{\mathrm{Ouv}}
+\providecommand{\Perf}{\mathrm{Perf}}
+\providecommand{\Poset}{\mathrm{Poset}}
+\providecommand{\Pr}{\mathrm{Pr}}
+\providecommand{\Pre}{\mathrm{Pre}}
+\providecommand{\PSh}{\mathrm{PSh}}
+\providecommand{\PShv}{\mathrm{PShv}}
+\providecommand{\qCat}{\mathrm{qCat}}
+\providecommand{\QCoh}{\mathrm{QCoh}}
+\providecommand{\Rep}{\mathrm{Rep}}
+\providecommand{\Ring}{\mathrm{Ring}}
+\providecommand{\RMod}{\mathrm{RMod}}
+\providecommand{\sAb}{\mathrm{sAb}}
+\providecommand{\Sch}{\mathrm{Sch}}
+\providecommand{\Set}{\mathrm{Set}}
+\providecommand{\SH}{\mathrm{SH}}
+\providecommand{\Sh}{\mathrm{Sh}}
+\providecommand{\Shv}{\mathrm{Shv}}
+\providecommand{\Sm}{\mathrm{Sm}}
+\providecommand{\Sp}{\mathrm{Sp}}
+\providecommand{\Spectra}{\mathrm{Spectra}}
+\providecommand{\Spc}{\mathrm{Spc}}
+\providecommand{\sPre}{\mathrm{sPre}}
+\providecommand{\Spt}{\mathrm{Spt}}
+\providecommand{\sSet}{\mathrm{sSet}}
+\providecommand{\sShv}{\mathrm{sShv}}
+\providecommand{\Stack}{\mathrm{Stack}}
+\providecommand{\Sub}{\mathrm{Sub}}
+\providecommand{\Top}{\mathrm{Top}}
+\providecommand{\Tors}{\mathrm{Tors}}
+\providecommand{\Var}{\mathrm{Var}}
+\providecommand{\Vect}{\mathrm{Vect}}
+
+%%%%%%%%%%%%
+% category_theory
+% For blackboard bold number and delta categories
+\RequirePackage{bbm}
+\providecommand{\onecat}{\mathbbm{1}}
+\providecommand{\twocat}{\mathbbm{2}}
+
+% Blackboard delta
+\RequirePackage{pict2e,picture}
+
+\makeatletter
+\DeclareRobustCommand{\DDelta}{{\mathpalette\bb@Delta\relax}}
+\newcommand{\bb@Delta}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\Delta$}%
+  \dimendef\Dht=6 \dimendef\Dwd=8
+  \setlength{\Dwd}{\wd\z@}%
+  \setlength{\Dht}{\ht\z@}%
+  \begin{picture}(\Dwd,\Dht)
+  \put(0,0){$\m@th#1\Delta$}
+  \put(.42\Dwd,.7\Dht){\line(10,-26){.25\Dht}}
+  \end{picture}%
+  \endgroup
+}
+
+% Heart (for e.g. t-structures)
+\usepackage{graphicx}
+\newcommand{\heart}{\ensuremath\heartsuit}
+
+% Other
+\providecommand{\HZ}{\mathrm{H}\mathbb{Z}}
+\providecommand{\Gm}{\mathbb{G}_m}
+% Spaces
+\providecommand{\CP}{{\mathbb{C}\text{P}}}
+\providecommand{\HP}{{\mathbb{H}\text{P}}}
+\providecommand{\RP}{{\mathbb{R}\text{P}}}
+
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\P}{\mathbb{P}}
+
+
