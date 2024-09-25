@@ -94,3 +94,17 @@
 
 \renewcommand*{\subsectionautorefname}{Subsection}
 \renewcommand*{\sectionautorefname}{Section}
+
+% Isabel's environments 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{construction}[thm]{Construction}
+\newtheorem{ntn}[thm]{Notation}
+
+\numberwithin{thm}{section}
+
