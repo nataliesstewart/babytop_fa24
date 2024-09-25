@@ -72,8 +72,6 @@
 \setlist[itemize,2]{leftmargin=2cm}
 \setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
 
-% Section headings
-\newcommand{\sectionheader}{Lecture~\thesection:~}
 
 % Course info
 \newcommand{\theinstructor}{Natalie Stewart}
@@ -83,9 +81,12 @@
 \newcommand{\theterm}{Fall 2024}
 
 % Title page
-\title{\MakeUppercase{\thetitle} \\ \theterm}
+\title{\MakeUppercase{Lecture notes on \thecoursetitle}}
 \author{\theinstructor}
 %\date{\theterm}
+
+% Bibliography stuff
+\usepackage[doi=false,isbn=false,url=false,style=alphabetic]{biblatex}
 
 % Header
 \usepackage{fancyhdr}
