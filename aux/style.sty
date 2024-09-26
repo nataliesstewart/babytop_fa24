@@ -83,21 +83,31 @@
 % Title page
 \title{\MakeUppercase{Lecture notes on \thecoursetitle}}
 \author{\theinstructor}
+\date{\today}
 %\date{\theterm}
 
 % Bibliography stuff
 \usepackage[doi=false,isbn=false,url=false,style=alphabetic]{biblatex}
 
+\usepackage{zref-titleref}
+\newcommand{\sectiontext}{}
 % Header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\itshape\thecoursenumber}
-\fancyhead[C]{\small\itshape\thecoursetitle}
+\fancyhead[CE]{\small\itshape\thecoursetitle}
+\fancyhead[CO]{\small\itshape\sectiontext}
 \fancyhead[R]{\small\itshape\theterm}
 
+\newcommand{\talk}[2]{
+  \renewcommand{\sectiontext}{#1}
+  \section{#1}
+  \input{tex/#2.tex}
+}
+
 % new toc
-\renewcommand{\contentsname}{\textbf{Contents}}
+\renewcommand{\contentsname}{\textbf{C\scriptsize ONTENTS}}
 \usepackage{xpatch}
 % Currently working on modification of https://tex.stackexchange.com/questions/227098/making-chapters-bold-in-table-of-contents
 % Add bold to \section titles in ToC and remove . after numbers
