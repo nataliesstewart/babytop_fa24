@@ -10,20 +10,20 @@ The structure of data files is the following:
 
 ```
 .
-|   README.md					% you are here
-|   main.tex					% meta-tex for main output
-|   oneref.tex					% only calls one talk tex
+|   README.md			% you are here
+|   main.tex			% meta-tex for main output
+|   oneref.tex			% only calls one talk tex
 └───aux
-|   |	environments.sty			% declares theorem-style environments
-|   |   macros.sty				% semantic \def's and \newcommand's
-|   |   mainmeta.sty				% single import for main.tex
-|   |   references.bib				% bibtex file
-|   |   style.sty				% formatting, toc, etc.
+|   |	environments.sty	% declares theorem-style environments
+|   |   macros.sty		% semantic \def's and \newcommand's
+|   |   mainmeta.sty		% single import for main.tex
+|   |   references.bib		% bibtex file
+|   |   style.sty		% formatting, toc, etc.
 └───originals
 |   └───mm_dd
-|       |   foo.tex				% original tex for the talk on american mm/dd, if tex was created elsewhere
+|       |   foo.tex		% original tex for the talk on american mm/dd, if tex was created elsewhere
 └───tex
-|   |   mmdd.tex				% inputtable tex for talk on american mm/dd
+|   |   mmdd.tex		% inputtable tex for talk on american mm/dd
 ``` 
 If creating or editing tex for a talk on mmdd, please modify it as `./tex/mmdd.tex` following the (no) formatting on previous talks, and to compile it, edit the single content line of `oneref.tex` to read `\talk{Author: Title}{mmdd}` and compile `oneref.tex`. 
 Please dump header or bibliography matters into the correct `./aux/*` files and let Natalie know of any bibliographic conflicts (such as differing keys for the same citation).
