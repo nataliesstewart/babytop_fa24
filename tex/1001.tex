@@ -1,0 +1,246 @@
+\begin{abstract}
+  We introduce $\ZZ$-graded equivariant cohomology theories on $G$-spaces with coefficients in a coefficient system. 
+  We will look at an example computation using cellular cochains. 
+  We define $G$-spectra to be the stabilization of $G$-spaces with respect to finite orthogonal $G$-representations. They represent $\RO(G)$-graded cohomology theories, where Mackey functors now play the role of the coefficients. 
+\end{abstract}
+
+The following notes were livetexed by Natalie Stewart for a talk given by Eunice Sukarto on September 24, 2024.
+They are chiefly based on Blumber's notes \cite{burnside} and section 3 of HHR \cite{HHR}.
+
+We will follow the following outline
+\begin{enumerate}
+  \item Talk about equivariant cohomology theories on $G$-spaces ($\ZZ$-graded)
+    \begin{enumerate}
+      \item Eilenberg Mac Lane $G$-spaces
+      \item cellular (co)chains
+    \end{enumerate}
+  \item Do some computations from HHR
+  \item Cover $G$-spectra
+    \begin{enumerate}
+      \item \nat{???}
+      \item $\RO(G)$-graded cohomology theories.
+      \item Eilenberg Mac Lane $G$-spectra.
+    \end{enumerate}
+\end{enumerate}
+
+Throughout this talk, $\cS$ will refer to spaces, $\cS_G$ will refer to $G$-spaces with weak equivalences inverted, $\cS_*$, pointed spaces, and
+\[
+  \cO_G = \cbr{G/H \mid H \subset G} \subset G\Top
+\]
+the \emph{Orbit category}.
+
+\subsection{Z-graded equivariant cohomology theories}%
+\subsubsection{Eilenberg Mac Lane $G$-spaces}%
+
+Recall that Elmendorf's theorem constructs an equivalence
+\[
+  \cS_G \xrightarrow\sim \Fun(\cO_G^{\op}, \cS)
+\]
+sending $X$ to the functor $G/H \mapsto X^H$.
+\begin{definition}
+  If $\cC$ is a category, then \emph{coefficient systems in $\cC$} are objects of the cat
+  \[
+    \Coeff^G \deq \Fun(\cO_G^{\op},\cC).
+  \]
+\end{definition}
+
+If $X$ is a $G$-space, we may define the coefficient system homotopy group $\upi_nX$ by
+\[
+  \upi_n(X)((H) = \pi_n^H X.
+\]
+In fact, given $\uA \in \Coeff^G(\Ab)$, we may define the \emph{eilenberg Mac Lane $G$-space}
+\[
+  \cO_G^{\op} \xrightarrow{\uA} \Ab \xrightarrow{K(-,n)} \cS;
+\]
+this is identified by the property
+\[
+  \upi_n(X) = \begin{cases}
+    \uA & m = n \\ 
+    0 & \mathrm{otherwise}. 
+  \end{cases}
+\]
+Now, the usual argument shows that $\Omega K(\uA,n) \simeq K(\uA,n-1)$, so we get an infinite-loop object in $\cS_G$.
+These give examples of the following...
+\begin{definition}
+  A \emph{$\ZZ$-graded cohomology theory on $\cS_{G,*}$} is a functor $H\colon h \cS_{G,*}^{\op} \rightarrow \Ab^{\ZZ}$ with a natural isomorphism
+  \[
+    H^{\bullet + 1}(\Sigma -) \simeq H^\bullet(-)
+  \]
+  satisfying the Eilenberg Steenrod-axioms.
+\end{definition}
+Brown representability constructs representing $\infty$-loop $G$-spaces for $\ZZ$-graded cohomology theories.
+\begin{example}
+  We may define \emph{equivariant singular cohomology}
+  \[
+    H^*_G(X;\uA) \deq \pi_* \Map^G(X,H\uA),
+  \]
+  where $H\uA$ is the infinite loop $G$-space corresponding with $K(\uA,-)$.
+\end{example}
+
+\subsubsection{Cellular cochains}%
+Let $X$ be a $G$-cw-complex.
+Then, we set the notatation $X_{n}$ for
+\[
+  X^{(n)}/X^{(n-1} \simeq X_{n+} \wedge S^n.
+\]
+We additionally define
+\[
+  C_n^{\mathrm{cell}}(X;\uA) = \pi_n^G(H\uA \wedge X^{(n)}/X^{(n-1)}) = \pi_0^G(H\uA \wedge X_{n+1}). 
+\]
+Similarly, we define
+\[
+  C^n_{\mathrm{cell}}(X;\uA) = [X^{(n)}/X^{(n-1)},H\uA] = [X_{n+} \wedge S^n, H\uA]
+\]
+It turns out that $H_*^G(X;\uA)$ is the cohomology of the cellular cochains.
+\begin{lemma}\label{blah lem}
+  Let $X$ be a $G$-CW-complex and $\uA$ a constant coefficient system.
+  Then, there is a natural equivalence
+    \[
+      H^*_G(X;\uA) \simeq H^*(X/G,A)
+    \]
+\end{lemma}
+\begin{proof}[Proof sketch]
+  The proof follows by noting that the equivariant cellular cochains are invariants in the cellular cochains with the $G$-action.
+\end{proof}
+
+For the important computation, let $G$ be a nontrivial group, $\rho$ the regular representation, and $n \geq 1$.
+We will show the following.
+\begin{proposition}
+  Let $G$ be nontrivial and $n \geq 0$.
+  Then, unless $G = C_3$ and $i = 3$ and $n = 1$, we have
+  \[
+    H_G^i(S^{n\rho};\uZZ) = 0; \hspace{50pt} 1 \leq i \leq 3.
+  \]
+  For the exceptional case, we have
+  \[
+    H_{C_3}^3(S^\rho;\uZZ) = \ZZ.
+  \]
+\end{proposition}
+\begin{proof}
+  We will begin by showing that show 
+  \[
+    H^0_G(S^{n\rho - 1};\uA) = H_G^1(S^{n\rho - 1};\uA) = 0;
+  \]
+  to see this, we use \cref{blah lem} and the expression
+  \[
+    S^{n\rho-1}/G \simeq \Sigma S(n\rho - 1)/G;
+  \]
+  if $n\abs{G} > 2$, then $S(n\rho - 1)$ is connected, so the orbit space is connected.
+  If $G = C_2$ and $n = 1$, then $\rho - 1$ is the sign representation, so we can check that $S(\sigma)/C_2$ is connected;
+  after taking a suspension, we acquire that $S^{n\rho - 1}/G$ is simply connected.
+  Suspending, we've covered the case $i \leq 2$.
+
+  In general, if $n = 0$, this is easy, so we choose $n > 0$.
+  If $n + i \geq 3$ or $n \geq 2$ then we're covered by dimension counting.
+  So we're left with the case $n = 1$ and $i = 3$;
+  in this case, we write $X = S^{\rho - 1}/G$ and note that $X$ is simply connected, so UCT constructs an injection
+  \[
+    H^2(X;\ZZ) \hookrightarrow H^2(X;\QQ).
+  \]
+  Since $\QQ$ has characteristic 0, we can compute
+  \[
+    H^*(Y/G;\QQ) \simeq H^*(X;\QQ)^G 
+  \]
+  for all $G$.
+  If $\abs{G} \neq 3$, we get $H^2 = 0$.
+  If $\abs{G} = 3$, then \nat{we proceed as in HHR}.
+\end{proof}
+
+We now move on to $G$-spectra.
+
+\subsection{\texorpdfstring{$G$}{G}-spectra}%
+\def\SW{\mathrm{SW}}
+From here on, we say ``$G$-representation'' to mean finite dimensional orthogonal real representations of $G$.
+Given a pointed $G$-spaces $X \in \cS_{G,*}$, we may write
+\[
+  \Sigma^V X \deq S^V X; \hspace{40pt} \Omega^V X = \Map(S^V,X); \hspace{40pt} \pi_V^G X = \pi_0^G \Omega^V X.
+\]
+We define the \emph{$G$-Spanier whitehead category} $\SW^G$ to have objects the finite pointed $G$-CW complexes, the morphisms
+\[
+  \cbr{X,Y}^G = \colim_V \Map^G(\Sigma^V X, \Sigma^V Y)
+\]
+This is not stable...
+\begin{definition}
+  The \emph{$\infty$-category of $G$-spaces} is the limit
+  \[
+    \Sp_G \deq \lim \prn{\cdots \xrightarrow{\Omega^{\rho}} \cS_{G,*} \xrightarrow{\Omega^{\rho}} \cS_{G,*}}.
+  \]
+\end{definition}
+Since every $G$-rep embeds into some $n\rho$, this inverts $S^V$ for all $G$-reps $V$.
+Given $X \in \Sp_G$, we let
+\[
+  \pi_k^G X = \colim_{V \gg 0} \pi_{V +k}^H X_V.
+\]
+We will write $\RO(G)$ for the Grothendieck group of the monoid of $G$-representations.
+An \emph{$\RO(G)$-graded cohomology theory} will refer to a functor
+\[
+  E\colon  \RO(G) \times h\cS_{G,*}^{\op} \rightarrow \Ab
+\]
+with a natural equivalence
+\[
+  E^{V}(X) \simeq E^{V \oplus W}(\Sigma^W X)
+\]
+for each $V$,$W$, and satisfying the Eilenberg-Steenrod axioms.
+In general, given a $G$-spectrum $E$, we get one of these via
+\[
+  E^V(X) \deq [\Sigma^{\infty + V} X, X];
+\]
+$\RO(G)$-graded Brown representability says that this gives \emph{every} $\RO(G)$-graded chomology theory.
+
+In general, $H^*(X;\uA)$ extends to an $\RO(G)$-graded cohomology theory if and only if $\uA$ is the underlying coefficient system of a Mackey functor in the following sense.
+
+\subsection{Mackey functors}%
+\begin{definition}
+  Let $\cC$ be a small category with finite limits and finite coproducts.
+  Then, we can form the category $\Span(\cC)$ to have objects given by $\Ob(\cC)$ and morphisms $X \rightarrow Y$ the isomorphism-classes of spans
+  \[
+    X \leftarrow R \rightarrow Y.
+  \]
+  We may also define $\Span^+(\cC)$ to be the completion of $\Span(\cC)$ to an additive category;
+  that is, its hom abelian groups are the grothendieck groups of the hom commutative monoids on $\Span(\cC)$.
+  We define the \emph{additive Brunside category}
+  \[
+    B_G \deq \Span^+(\FF_G),
+  \]
+  where $\FF_G$ denotes finite $G$-sets.
+\end{definition}
+\begin{definition}
+  A \emph{Mackey functor} is a product-preserving functor
+  \[
+    B_G^{\op} \rightarrow \cA,
+  \]
+  where $\cA$ is an additive category.
+  We set the notation
+  \[
+    \Mack^G(\cA) \deq \Fun^{\times}(B_G^{\op},\cA);
+  \]
+  this correspond with a pair of covariant and contravariant functors $\cO_G \rightarrow \cA$ and $\cO_G^{\op} \rightarrow \cA$ with the same objects, and satisfying a \emph{Beck-Chevalley condition}.
+\end{definition}
+\begin{example}
+  Some examples include the following:
+  \begin{itemize}
+    \item $\upi_* X$, where $X \in \Sp_G$.
+    \item the ``constant'' Mackey functor $\uA$ 
+    \item the ``Burnside'' Mackey functor $\uA(G)$, where $\uA(G)(H)$ is the group ring of finite $H$-sets with restriction and induction as contravariant and covariant functoriality.
+  \end{itemize}
+\end{example}
+
+\begin{claim}
+  Every Mackey functor is $\pi_0 H\uM$ for some $G$-spectrum $H\uM$ characterized by the property
+  \[
+    \upi_n H\uM = \begin{cases}
+      \uM & n=0 \\ 
+      0 & \mathrm{otherwise} 
+    \end{cases}
+  \]
+\end{claim}
+\begin{proof}
+  We may construct this by constructing a $\ZZ$-graded cohomology theory
+  \[
+    C_n(X) \deq \pi_n(X^{(n)}/X^{(n-1)}); \hspace{40pt} C^n(X;\uM) \deq [C_n(X), \uM]
+  \]
+  with hom taken in Mackey functors.
+  This is a chain complex of Abelian groups;
+  Brown representability then lifts this to a $G$-spectrum, and an explicit computation of cohomology of $\SS$ verifies that $H\uM$ has the correct homotopy groups.
+\end{proof}
+
