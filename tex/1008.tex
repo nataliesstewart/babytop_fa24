@@ -1,0 +1,197 @@
+\documentclass{amsart}
+
+\usepackage{aux/mainmeta}
+
+\begin{document}
+\begin{abstract}
+  We introduce $G$-categories and spectral Mackey functors, and show that the $G$-category of $G$-spectra is equivalent to the $G$-category of mackey functors valued in spectra. This provides a convenient model for the $G$-category of $G$-spectra. Along the way, we will define $G$-stability and $G$-semiadditivity.
+\end{abstract}
+
+The following notes were livetexed by Natalie Stewart for a talk delivered on October 8, 2024.
+They are mainly based on Nardin's Expose IV \cite{Nardin}.
+
+\subsection{G-categories and G-stability}
+Let $G$ be a finite group.
+Recall that Elmendorf's theorem provided a convenient model for $G$-spaces:
+\[
+  \cS \simeq \Fun\prn{\cO_G^{\op},\cS}.
+\]
+We're after a version of this for $G$-spectra, which won't be as simple.
+Following along these lines, we make the following definition.
+\begin{definition}
+  A \emph{$G$-category} is a functor
+  \[
+    \cO_G^{\op} \rightarrow \Cat.
+  \]
+\end{definition}
+\begin{example}\,
+  \begin{enumerate}
+    \item The $G$-category of $G$-spaces $\ucS_G$ has $G/H$-value
+    \[
+      \ucS_G(G/H) \deq \cS_H.
+    \]
+    \item the $G$-category of $G$-categories has
+      \[
+        \uCat_G(G/H) \deq \Cat_H.
+      \]
+    \item Generalizing the previous two, we define the category of coefficient systems by 
+      \[
+        \Coeff_G(\cC) \deq \Fun(\cO_G^{\op},\cC)
+      \]  
+      and the $G$-category of coefficient systems to have values
+      \[
+        \uCoeff_G(\cC)(G/H) \deq \Coeff_H(\cC)
+      \]
+    \item Recall that the category of $G$-spectra is defined by the limit
+      \[
+        \Sp_G \deq \lim \prn{\cdots \rightarrow \cS_G \xrightarrow{\Omega^\rho} \cS_G}
+      \]
+      The $G$-category of $G$-spectra has values
+      \[
+        \uSp_G(G/H) \deq \Sp_H.
+      \]
+    \item The $G$-category of $k$-linear $G$-representations $\uRep_k(G)$ has $H$-value
+      \[
+        \uRep_k(G)(G/H) \deq \uRep_k(H).
+      \]
+  \end{enumerate}
+\end{example}
+
+Now, given $K \subset H \subset G$, there's a map in the orbit category $G/K \rightarrow G/H$;
+given a $G$-category $\ucC$, this produces a \emph{restriction functor}
+\[
+  \Res_K^H\cln \cC(G/H) \rightarrow \cC(G/K).
+\]
+When this has a left adjoint, we refer to it as $\Ind_K^H$, and when it has a right adjoint, we refer to it as $\CoInd_K^H$.
+
+There are examples:
+$\Ind_K^H\colon \cS_K \rightarrow \cS_H$ takes a $K$-space to a ``$H/K$-indexed coproduct'', with $H$-action on the indexing set and on the summands.
+We will in general refer to $\Ind_K^H$ as a $H/K$-indexed coproduct and $\CoInd_K^H$ a $H/K$-indexed product.
+
+We assumed that $G$ is a finite group;
+in $\uRep_k(G)$, it is well known that $\Ind_K^H \simeq \CoInd_K^H$, which more or less follows from the equivalence $\coprod \simeq \prod$ in $\Vect_k$.
+We're after stability properties for \emph{$G$-categories};
+we make the following definition.
+
+\begin{definition}
+  $\ucC$ is \emph{$G$-stable} if $\cC(G/H)$ is stable for all $H$, and the \emph{norm} map
+  \[
+    \Ind_K^H X \rightarrow \CoInd_K^H X 
+  \]
+  adjunct to $X \rightarrow \Res \CoInd_K^H X$ (which you can construct via a ``diagonal'') is an equivalence.
+\end{definition}
+
+An important theorem is the following.
+\begin{theorem}
+  $\uSp_G$ is $G$-stable.
+\end{theorem}
+\begin{proof}
+  Note that $\Sp_H$ has $S^1$-inverted, so $\uSp_G$ is \emph{fiberwise stable} (i.e. its $G/H$-values are stable).
+  We're left with proving that $\Ind$ and $\CoInd$ agree;
+  by replacing the top subgroup with $G$ it suffices to prove that $\Ind_H^G \simeq \CoInd_H^G$.
+
+  Now, note that
+  \begin{align*}
+    \Ind_H^G &\simeq \prn{\Sigma_+^\infty G} \otimes_H X\\
+      \CoInd_H^G &\simeq \Map^H(\Sigma_+^\infty G, H);
+  \end{align*}
+  take $K$-fixed points for some $K$.
+
+  At the end of the day, we can check on fixed points that the norm is an equivalence\footnote{\nat{Do we know intrinsically in this talk that total fixed points is conservative}?};
+  this should come down to self-duality of $\Sigma_+^\infty G/H$, so we verify that.
+  To produce the duality datum, it's easy to take suspension spectrum of the map $G/H \times G/H \rightarrow G/G$ to define the evaluation map
+  \[
+    \Sigma^\infty_+ G/H \otimes \Sigma^\infty_+ G/H \rightarrow \SS.
+  \]
+  To define the coevaluation map
+  \[
+    \coev\colon  \SS_G \rightarrow \Sigma_+^\infty G/H \otimes \Sigma_+^\infty G/H,
+  \]
+  we're essentially tasked with constructing a map
+  \[
+    G/G \rightarrow \Omega^\infty \Sigma_+^\infty(G/H \times G/H)
+  \]
+  Now note that there is a $G/H$-indexed point
+  \[
+    G/H \rightarrow \Omega^\infty \Sigma_+^\infty \prn{G/H \times G/H}
+  \]
+  There is a recognition principle
+  \[
+    \prn{\Sp_G}_{\geq 0} \simeq \Alg_{\EE_{\rho \infty}}^{\mathrm{grplike}}(\cS_G)
+  \]
+  due to Rourke and Sanderson,
+  so we may sum together the above $G/H$-indexed point to construct the adjunct to the coevaluation map.
+\end{proof}
+
+\subsection{Equivariant stabilization}%
+\begin{definition}
+  $\Cat_G^{\ex}$ is the category of $G$-stable $G$-categories with functors that are fiberwise exact and commute with $\Ind$ and $\CoInd$.
+\end{definition}
+There is a fully faithful forgetful functor
+\[
+  U\colon \Cat_G^{\ex} \rightarrow \Cat_G^{\lex},
+\]
+the latter denoting arbitrary $G$-categories (with limits) and finite limit-preserving functors which preserve $\CoInd$.
+This possesses a \emph{right adjoint} called \emph{$G$-stabilization}, and written $\uStab_G$.
+We will relate this to the following.
+\begin{definition}
+  A \emph{Mackey functor} is a product-preserving $G$-functor $\uSpan^+(\uFF_G) \rightarrow \ucC$\footnote{\nat{Definition here.}}, the former denoting a $G$-$\infty$-categorical version of the \emph{2-category} $\Span(\FF_G)$ whose 2-cells are isomorphisms of spans.
+  We define the $G$-category $\uMack_G(\ucC)$ of $G$-Mackey functors in $G$ as the $G$-functor $G$-category
+  \[
+    \uMack_G(\ucC) \deq \uFun_G^{\times}\prn{\uSpan^+_G(\uFF_G),\ucC}
+  \]
+\end{definition}
+
+\begin{definition}
+  The \emph{category of fiberwise-stable $G$-categories} $\Cat_G^{f-st}$ has objects the fiberwise-stable $G$-categories with morphisms given by the functors which are fiberwise exact and preserve $\CoInd$.
+\end{definition}
+This time, there is an adjunction
+\[
+  U\colon \Cat_G^{\ex} \longrightleftarrows \Cat_G^{f-st}\colon  \uMack_G;
+\]
+this is a fact which we will take for granted, and remember as stating that Mackey functors implement \emph{$G$-semiadditivization}.
+
+\subsection{The spectral Mackey functor theorem}%
+\begin{theorem}
+  The functor 
+  \[
+    \uSp_G \rightarrow \uStab_G(\ucS_G) \simeq \uMack_G(\Coeff_G(\Sp)) \simeq \uMack_G(\Sp)
+  \]
+  factoring $\Omega^\infty$ is an equivalence.
+\end{theorem}
+
+To prove this, we will use a version of Schwede-Shipley;
+if $\cC$ is stable and $X \in \cC$ is a compact generator of $\cC$, then there is an equivalence $\cC \simeq \RMod_{\End(X)}$
+\nat{or $\LMod$, not quite sure}.
+We move on to the proof.
+\begin{proof}
+  Replacing $G$ with $H$, we check that the associated functor $\Sp_G \rightarrow \Mack_G(\Sp)$ is an equivalence;
+  we will check this using a Schwede-Shipley type argument on the stable-generators $\Sigma_+^\infty G/H$;
+  by taking a direct sum, it suffices to prove that this functor is fully faithful on $\cbr{\Sigma_+^\infty G/H}$.
+
+  Now recall that there are left adjoints to the functors
+  \[
+    \uSp_G \rightarrow \uMack_G(\Sp) \rightarrow \cS_G,
+  \]
+  so we will check that the \emph{left adjoint} to the desired functor is an equivalence;
+  this left adjoint sends suspension spectra to suspension spectra.
+  Now, we may use dualizability to construct an equivalence
+  \[
+    \Map_{\Sp_G}\prn{\Sigma_+^\infty G/H, \Sigma^\infty_+ G/K} \simeq \Map_{\Sp_G}\prn{\SS_G, \Sigma_+^\infty(G/H \times G/K)} \simeq \prn{\Omega^\infty \Sigma_+^\infty \prn{G/H \times G/K}}^G.
+  \]
+  If we think of the Mackey functor
+  \[
+    \Sigma_+^\infty G/H\colon  \Span^+(\FF_G) \rightarrow \Sp,
+  \]
+  this is \emph{corepresented} by $G/H$, using additivity of the former.
+  What remains is the computation
+  \[
+    \Map_{\Span(\FF_G)}(G/H,G/K),
+  \]
+  which follows by the equivariant Baratt-Priddy-Quillen theorem, which we remember as
+  \[
+  \prn{\FF_{G, /\prn{G/H \times G/K}}}^{\sqcup, \mathrm{gpc}} \simeq \prn{\Omega^\infty \Sigma^\infty \prn{G/H \times G/K}}^G
+  \]
+\end{proof}
+
+\end{document}

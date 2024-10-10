@@ -28,3 +28,5 @@ The structure of data files is the following:
 If creating or editing tex for a talk on mmdd, please modify it as `./tex/mmdd.tex` following the (no) formatting on previous talks, and to compile it, edit the single content line of `oneref.tex` to read `\talk{Author: Title}{mmdd}` and compile `oneref.tex`. 
 Please dump header or bibliography matters into the correct `./aux/*` files and let Natalie know of any bibliographic conflicts (such as differing keys for the same citation).
 
+Starting at `1008.tex`, the copy of each file in the `./originals` directory will be compilable in the root directory;
+I suggest symlinking to `./aux` in the `./originals` directory in order to directly edit there.
